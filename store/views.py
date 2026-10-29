@@ -99,3 +99,14 @@ def register(request):
     else:
         form = UserCreationForm()                    # GET request → show an empty form
     return render(request, 'store/register.html', {'form': form})
+
+
+def decrease_cart(request, product_id):
+    cart = request.session.get('cart', {})        # read the cart from the session
+    key = str(product_id)                         # session keys are text
+    if key in cart:                               # only act if the product is in the cart
+        cart[key] -= 1                            # reduce quantity by 1
+        if cart[key] <= 0:                        # if it reached 0...
+            del cart[key]                         # ...remove the product completely
+    request.session['cart'] = cart                # save the cart back
+    return redirect('cart')                       # return to the cart page

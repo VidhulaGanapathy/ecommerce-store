@@ -14,3 +14,84 @@ table { width: 100%; background: white; border-collapse: collapse; }
 th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
 .detail { display: flex; gap: 30px; background: white; padding: 20px; }
 .detail img { width: 300px; }
+/* ---------- CHECKOUT PAGE ---------- */
+.checkout-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+/* two equal columns side by side; align-items: start stops the shorter box from stretching */
+
+.checkout-box { background: white; padding: 24px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+/* white card with rounded corners and a soft shadow */
+
+.checkout-box h2 { margin-top: 0; padding-bottom: 12px; border-bottom: 2px solid #ff9900; }
+/* box heading with an orange line underneath */
+
+.checkout-box label { display: block; font-weight: bold; margin-bottom: 8px; }
+/* label sits on its own line, in bold */
+
+.checkout-box textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px;
+                         font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; resize: vertical; }
+/* full-width textarea; box-sizing keeps padding inside the width; resize: vertical lets the user drag only up/down */
+
+.btn-full { width: 100%; margin-top: 16px; padding: 14px; font-size: 16px; font-weight: bold; }
+/* big full-width "Place Order" button */
+
+.summary-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #eee; }
+/* each product row: picture, text and price in one line */
+
+.summary-item img { width: 70px; height: 70px; object-fit: contain; border: 1px solid #eee; border-radius: 6px; }
+/* small square thumbnail, whole image visible */
+
+.summary-info { flex: 1; }
+/* flex: 1 = take all the leftover space, which pushes the price to the far right */
+
+.summary-name { margin: 0; font-weight: bold; }
+.summary-qty { margin: 4px 0 0; color: #666; font-size: 14px; }
+.summary-price { margin: 0; font-weight: bold; }
+
+.summary-total { display: flex; justify-content: space-between; margin-top: 18px; padding-top: 14px;
+                 border-top: 2px solid #232f3e; font-size: 20px; font-weight: bold; }
+/* space-between puts "Total" on the left and the amount on the right */
+
+@media (max-width: 700px) { .checkout-layout { grid-template-columns: 1fr; } }
+/* on phones, stack the two boxes in one column */
+
+/* ---------- CART PAGE ---------- */
+.cart-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start; }
+/* left column is twice as wide as the right one */
+
+.cart-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid #eee; }
+/* one cart row: image, details, quantity box, price in a line */
+
+.cart-item img { width: 90px; height: 90px; object-fit: contain; border: 1px solid #eee; border-radius: 6px; }
+
+.cart-info { flex: 1; }
+/* takes the leftover space, pushing quantity and price to the right */
+
+.remove-link { color: #c0392b; font-size: 14px; text-decoration: none; }
+.remove-link:hover { text-decoration: underline; }
+
+.qty-box { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; }
+/* the - 1 + box; overflow: hidden keeps the corners rounded */
+
+.qty-btn { padding: 6px 14px; background: #f0f0f0; color: black; text-decoration: none; font-size: 18px; font-weight: bold; }
+.qty-btn:hover { background: #ff9900; }
+.qty-number { padding: 6px 14px; min-width: 20px; text-align: center; background: white; }
+
+.price-row { display: flex; justify-content: space-between; padding: 8px 0; color: #555; }
+.center { text-align: center; box-sizing: border-box; }
+.continue-link { display: block; text-align: center; margin-top: 14px; color: #232f3e; text-decoration: none; }
+.empty-box { text-align: center; padding: 40px; }
+
+/* ---------- MY ORDERS PAGE ---------- */
+.order-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+.order-header { display: flex; justify-content: space-between; align-items: center;
+                padding-bottom: 12px; border-bottom: 2px solid #ff9900; margin-bottom: 8px; }
+.order-title { margin: 0; font-size: 18px; font-weight: bold; }
+.order-total { background: #232f3e; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; }
+/* the dark rounded "pill" showing the total */
+.order-address { margin: 14px 0 0; color: #444; }
+
+@media (max-width: 700px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .cart-item { flex-wrap: wrap; }
+}
+/* on phones: stack the columns and let cart rows wrap */
