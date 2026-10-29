@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Register</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}                                    <!-- Django builds all form fields for us -->
+  <button type="submit" class="btn">Sign Up</button>
+</form>
+<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+{% endblock %}

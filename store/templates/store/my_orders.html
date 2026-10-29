@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>My Orders</h1>
+{% for order in orders %}
+<div class="card">
+  <h3>Order #{{ order.id }} – {{ order.created_at|date:"d M Y" }}</h3>   <!-- |date: formats the date -->
+  <p>Address: {{ order.address }}</p>
+  <ul>
+    {% for item in order.items.all %}                <!-- all OrderItems of this order (thanks to related_name) -->
+    <li>{{ item.product.name }} × {{ item.quantity }} (₹{{ item.price }} each)</li>
+    {% endfor %}
+  </ul>
+  <p><b>Total: ₹{{ order.total }}</b></p>
+</div>
+{% empty %}
+<p>You have not placed any orders yet.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; }   /* page font and background */
+nav { background: #232f3e; padding: 15px; }                                  /* dark top bar */
+nav a, nav button { color: white; margin-right: 20px; text-decoration: none; }
+nav button { background: none; border: none; font-size: 16px; cursor: pointer; }
+.inline { display: inline; }                                                 /* keeps logout form in the same line */
+.container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }        /* centers content */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+/* grid = auto-fit as many 220px+ columns as the screen allows */
+.card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.card img { width: 100%; height: 240px; object-fit: contain; background: white; }
+.btn { background: #ff9900; color: black; padding: 8px 14px; border-radius: 5px;
+       text-decoration: none; border: none; cursor: pointer; display: inline-block; }
+table { width: 100%; background: white; border-collapse: collapse; }
+th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+.detail { display: flex; gap: 30px; background: white; padding: 20px; }
+.detail img { width: 300px; }

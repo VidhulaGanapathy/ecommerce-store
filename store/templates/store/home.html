@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}                     <!-- use base.html as the layout -->
+{% block content %}
+<h1>Our Products</h1>
+<div class="grid">
+  {% for product in products %}                     <!-- repeat this card for every product -->
+  <div class="card">
+    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+    <h3>{{ product.name }}</h3>
+    <p>₹{{ product.price }}</p>
+    <a href="{% url 'product_detail' product.id %}">View Details</a>
+    <a href="{% url 'add_to_cart' product.id %}" class="btn">Add to Cart</a>
+  </div>
+  {% empty %}                                       <!-- runs if the list is empty -->
+  <p>No products yet. Add some from the admin panel.</p>
+  {% endfor %}
+</div>
+{% endblock %}
