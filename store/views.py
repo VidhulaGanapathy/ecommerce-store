@@ -7,12 +7,19 @@ from .models import Product, Order, OrderItem
 
 # ---------- PRODUCT PAGES ----------
 
+def landing(request):
+    if request.user.is_authenticated:      # is this visitor already logged in?
+        return redirect('home')            # yes → skip the entrance, go straight to the shop
+    return render(request, 'store/landing.html')   # no → show the welcome page
+
+
+@login_required
 def home(request):                                   # every view receives 'request' (info about the visitor's request)
     products = Product.objects.all()                 # get ALL rows from the Product table
     return render(request, 'store/home.html', {'products': products})
     # render = fill the template with data. {'products': products} sends data to the template under the name 'products'
 
-
+@login_required
 def product_detail(request, product_id):             # product_id comes from the URL (e.g. /product/3/)
     product = get_object_or_404(Product, id=product_id)   # get product with that id, or show a 404 error page
     return render(request, 'store/product_detail.html', {'product': product})
@@ -21,7 +28,7 @@ def product_detail(request, product_id):             # product_id comes from the
 # ---------- CART (stored in the session) ----------
 # A session is a small notebook Django keeps for each visitor. Our cart looks like:
 # {'3': 2, '5': 1}  means  product 3 → quantity 2,  product 5 → quantity 1
-
+@login_required
 def add_to_cart(request, product_id):
     cart = request.session.get('cart', {})           # read the cart from the session; if none exists, use an empty {}
     key = str(product_id)                            # session keys must be text, so convert the number to a string
@@ -29,7 +36,7 @@ def add_to_cart(request, product_id):
     request.session['cart'] = cart                   # save the cart back into the session
     return redirect('cart')                          # send the user to the cart page
 
-
+@login_required
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
     cart.pop(str(product_id), None)                  # remove that product (None = don't crash if it's not there)
@@ -48,7 +55,7 @@ def get_cart_items(request):                         # helper function used by b
         items.append({'product': product, 'quantity': quantity, 'subtotal': subtotal})
     return items, total                              # give back both the list and the total
 
-
+@login_required
 def cart(request):
     items, total = get_cart_items(request)           # call the helper
     return render(request, 'store/cart.html', {'items': items, 'total': total})
@@ -100,7 +107,7 @@ def register(request):
         form = UserCreationForm()                    # GET request → show an empty form
     return render(request, 'store/register.html', {'form': form})
 
-
+@login_required
 def decrease_cart(request, product_id):
     cart = request.session.get('cart', {})        # read the cart from the session
     key = str(product_id)                         # session keys are text
@@ -110,3 +117,5 @@ def decrease_cart(request, product_id):
             del cart[key]                         # ...remove the product completely
     request.session['cart'] = cart                # save the cart back
     return redirect('cart')                       # return to the cart page
+
+

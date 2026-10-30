@@ -1,13 +1,19 @@
 {% extends 'store/base.html' %}
 {% block content %}
+
+<a href="{% url 'home' %}" class="back-link">← Back to products</a>
+
 <div class="detail">
-  <img src="{{ product.image_url }}" alt="{{ product.name }}">
-  <div>
+  <div class="detail-img">
+    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+  </div>
+
+  <div class="detail-info">
     <h1>{{ product.name }}</h1>
-    <p>{{ product.description }}</p>
-    <h2>₹{{ product.price }}</h2>
-    <a href="{% url 'add_to_cart' product.id %}" class="btn">Add to Cart</a>
-    <a href="{% url 'home' %}">← Back to products</a>
+    <p class="detail-price">₹{{ product.price }}</p>
+    <p class="detail-desc">{{ product.description }}</p>
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-big">Add to Cart</a>
   </div>
 </div>
+
 {% endblock %}

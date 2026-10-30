@@ -7,7 +7,7 @@
 
   <div class="order-header">
     <div>
-      <p class="order-title">Order #{{ order.id }}</p>
+      <p class="order-title">Order #{{ forloop.revcounter }}</p>
       <p class="summary-qty">Placed on {{ order.created_at|date:"d M Y, h:i A" }}</p>
     </div>
     <div class="order-total">₹{{ order.total }}</div>

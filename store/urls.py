@@ -3,7 +3,8 @@ from django.contrib.auth import views as auth_views    # Django's built-in login
 from . import views                                    # import our views.py
 
 urlpatterns = [
-    path('', views.home, name='home'),                                       # homepage
+    path('', views.landing, name='landing'),          # the entrance page, at the root address
+    path('shop/', views.home, name='home'),           # the product page now lives at /shop/    
     path('product/<int:product_id>/', views.product_detail, name='product_detail'),
     # <int:product_id> captures a number from the URL and passes it to the view
 

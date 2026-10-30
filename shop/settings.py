@@ -130,4 +130,4 @@ MAILERS = {
 
 LOGIN_URL = 'login'            # if a non-logged-in user opens a protected page, send them to the page named 'login'
 LOGIN_REDIRECT_URL = 'home'    # after login, go to the page named 'home'
-LOGOUT_REDIRECT_URL = 'home'   # after logout, go to the page named 'home'
+LOGOUT_REDIRECT_URL = 'landing'   # after logout, go to the page named 'home'
