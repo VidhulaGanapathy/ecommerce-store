@@ -25,11 +25,11 @@ SECRET_KEY = 'django-insecure-26_z5u@u*&bf=2_ehmfd^z0$_055e8#4!i*^lwvi)6#^nt7$-r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'e-commerce-cartify-flax.vercel.app',
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = []
+#     'e-commerce-cartify-flax.vercel.app',
+#     'localhost',
+#     '127.0.0.1',
+# ]
 
 
 # Application definition
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,14 +54,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
 
 ROOT_URLCONF = 'shop.urls'
 
@@ -130,7 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 
 
