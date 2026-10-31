@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-26_z5u@u*&bf=2_ehmfd^z0$_055e8#4!i*^lwvi)6#^nt7$-r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'e-commerce-cartify-flax.vercel.app',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
